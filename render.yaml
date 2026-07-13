@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: gridwars
+    env: node
+    plan: free # Can be upgraded if needed
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DB_PATH
+        value: /data/grid.db
+    disk:
+      name: grid-data
+      mountPath: /data
+      sizeGB: 1
