@@ -1,0 +1,5 @@
+node_modules/
+grid.db
+grid.db-shm
+grid.db-wal
+.DS_Store

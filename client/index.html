@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridWars — Claim Your Territory</title>
+  <meta name="description" content="A real-time multiplayer territory grid game. Claim cells and compete with others to dominate the board." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟪</text></svg>" />
+</head>
+<body>
+
+<!-- ═══ Username Modal ═══════════════════════════════════════════ -->
+<div id="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-logo">
+      <div class="brand-icon">⬡</div>
+      <h1>GridWars</h1>
+      <p>Claim tiles. Dominate the board.</p>
+    </div>
+    <div class="modal-field">
+      <label for="username-input">Your username</label>
+      <input
+        type="text"
+        id="username-input"
+        maxlength="20"
+        placeholder="Enter a name..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+    <button class="modal-btn" id="join-btn">Enter the Grid →</button>
+  </div>
+</div>
+
+<!-- ═══ App Shell ════════════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- Top Bar -->
+  <header id="topbar">
+    <div class="topbar-brand">
+      <div class="brand-icon">⬡</div>
+      <span>GridWars</span>
+    </div>
+
+    <div class="topbar-user">
+      <div class="user-badge" id="user-badge">
+        <span class="user-dot" id="topbar-dot"></span>
+        <span id="topbar-username">—</span>
+      </div>
+      <div class="topbar-stat">
+        <span>Cells</span>
+        <span class="stat-val" id="topbar-cells">0</span>
+      </div>
+      <div class="topbar-stat">
+        <span id="online-count" class="stat-val">0</span>
+        <span>online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Canvas Area -->
+  <main id="canvas-wrap">
+    <canvas id="grid-canvas"></canvas>
+
+    <!-- Zoom Controls -->
+    <div id="zoom-controls">
+      <button class="zoom-btn" id="zoom-in"  title="Zoom in">+</button>
+      <button class="zoom-btn" id="zoom-out" title="Zoom out">−</button>
+      <button class="zoom-btn" id="zoom-reset" title="Reset view" style="font-size:12px">⊙</button>
+    </div>
+
+    <!-- Mini Map -->
+    <div id="mini-map" title="Overview">
+      <canvas id="mini-canvas" width="100" height="100"></canvas>
+    </div>
+  </main>
+
+  <!-- Right Panel -->
+  <aside id="right-panel">
+    <!-- My Stats -->
+    <div class="panel-section">
+      <div class="panel-title">Your Stats</div>
+      <div id="my-stats">
+        <div class="stat-card">
+          <div class="sc-val" id="stat-cells">0</div>
+          <div class="sc-label">Cells Owned</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-val" id="stat-rank">—</div>
+          <div class="sc-label">Rank</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Online Users -->
+    <div class="panel-section">
+      <div class="panel-title">Online Now</div>
+      <div id="online-users-row"></div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="panel-section" style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+      <div class="panel-title">Leaderboard</div>
+      <div id="leaderboard-list"></div>
+    </div>
+
+    <!-- Activity Feed -->
+    <div class="panel-section" style="flex:1; overflow:hidden; display:flex; flex-direction:column; min-height:80px;">
+      <div class="panel-title">Activity</div>
+      <div id="activity-feed"></div>
+    </div>
+  </aside>
+
+  <!-- Bottom Bar -->
+  <footer id="bottombar">
+    <div id="cooldown-wrap">
+      <span id="cooldown-label">Ready</span>
+      <div id="cooldown-bar-track">
+        <div id="cooldown-bar-fill"></div>
+      </div>
+    </div>
+
+    <div id="grid-info">Hover a cell to inspect</div>
+
+    <div id="connection-status">
+      <div class="status-dot connecting" id="status-dot"></div>
+      <span id="status-label">Connecting…</span>
+    </div>
+  </footer>
+</div>
+
+<!-- Cell Tooltip -->
+<div id="cell-tooltip"></div>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
