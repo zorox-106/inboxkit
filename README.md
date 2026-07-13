@@ -2,6 +2,8 @@
 
 GridWars is a fast, multiplayer, territory-control grid game. Players join a shared $50 \times 50$ (2,500 cells) grid, claim tiles in real-time, compete on a live leaderboard, and watch the board update instantly as others capture cells.
 
+🔗 **Live Demo: [https://gridwars-yk0i.onrender.com/](https://gridwars-yk0i.onrender.com/)**
+
 ---
 
 ## 🚀 Tech Stack
